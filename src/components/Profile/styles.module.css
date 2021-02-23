@@ -22,4 +22,10 @@
 .container div p {
     font-size: 1rem;
     margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.container div p img {
+    margin-right: 0.5rem;
 }
