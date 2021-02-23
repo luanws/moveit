@@ -1,4 +1,4 @@
-import styles from './styles.module.css'
+const styles = require('./styles.module.css')
 
 export function ExperienceBar() {
   return (
