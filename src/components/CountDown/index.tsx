@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
-
 const styles = require('./styles.module.css')
 
+let timeout: NodeJS.Timeout
+
 export default function CountDown() {
-  const [time, setTime] = useState<number>(25 * 60)
-  const [active, setActive] = useState<boolean>(false)
+  const initialTime = 0.05 * 60
+
+  const [time, setTime] = useState<number>(initialTime)
+  const [isActive, setIsActive] = useState<boolean>(false)
+  const [hasFinished, setHasFinished] = useState<boolean>(false)
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -12,13 +16,22 @@ export default function CountDown() {
   const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
 
   useEffect(() => {
-    if (active && time > 0) {
-      setTimeout(() => setTime(time => time - 1), 1000)
+    if (isActive && time > 0) {
+      timeout = setTimeout(() => setTime(time => time - 1), 1000)
+    } else if (isActive && time == 0) {
+      setIsActive(false)
+      setHasFinished(true)
     }
-  }, [active, time])
+  }, [isActive, time])
 
   function startCountDown() {
-    setActive(true)
+    setIsActive(true)
+  }
+
+  function resetCountDown() {
+    clearTimeout(timeout)
+    setIsActive(false)
+    setTime(initialTime)
   }
 
   return (
@@ -34,13 +47,33 @@ export default function CountDown() {
           <span>{secondRight}</span>
         </div>
       </div>
-      <button
-        type="button"
-        className={styles.countDownButton}
-        onClick={startCountDown}
-      >
-        Iniciar um ciclo
-      </button>
+
+      {hasFinished && (
+        <button
+          disabled
+          className={styles.countDownButton}
+        >
+          Ciclo encerrado
+        </button>
+      )}
+      {!hasFinished && isActive && (
+        <button
+          type="button"
+          className={[styles.countDownButton, styles.countDownButtonActive].join(' ')}
+          onClick={resetCountDown}
+        >
+          Abandonar ciclo
+        </button>
+      )}
+      {!hasFinished && !isActive && (
+        <button
+          type="button"
+          className={styles.countDownButton}
+          onClick={startCountDown}
+        >
+          Iniciar um ciclo
+        </button>
+      )}
     </div>
   )
 }
