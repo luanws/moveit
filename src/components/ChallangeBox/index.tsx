@@ -4,7 +4,7 @@ import { useChallenge } from "../../contexts/ChallengesContext"
 const styles = require('./styles.module.css')
 
 export function ChallengeBox() {
-  const { activeChallenge } = useChallenge()
+  const { activeChallenge, resetChallenge } = useChallenge()
 
   return (
     <div className={styles.container}>
@@ -22,6 +22,7 @@ export function ChallengeBox() {
             <button
               type="button"
               className={styles.failedButton}
+              onClick={resetChallenge}
             >Falhei</button>
             <button
               type="button"
