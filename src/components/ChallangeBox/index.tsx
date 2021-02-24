@@ -1,20 +1,21 @@
 import { useState } from "react"
+import { useChallenge } from "../../contexts/ChallengesContext"
 
 const styles = require('./styles.module.css')
 
 export function ChallengeBox() {
-  const [hasActiveChallenge, setHasActiveChallenge] = useState<boolean>(true)
+  const { activeChallenge } = useChallenge()
 
   return (
     <div className={styles.container}>
-      {hasActiveChallenge && (
+      {activeChallenge && (
         <div className={styles.challengeActive}>
-          <header>Ganhe 400 xp</header>
+          <header>Ganhe {activeChallenge.amount} xp</header>
 
           <main>
-            <img src="icons/body.svg" />
+            <img src={`icons/${activeChallenge.type}.svg`} />
             <strong>Novo desafio</strong>
-            <p>Levante e faça uma caminhada de 3 minutos.</p>
+            <p>{activeChallenge.description}</p>
           </main>
 
           <footer>
@@ -29,7 +30,7 @@ export function ChallengeBox() {
           </footer>
         </div>
       )}
-      {!hasActiveChallenge && (
+      {!activeChallenge && (
         <div className={styles.challengeNotActive}>
           <strong>Finalize um ciclo para receber um desafio</strong>
           <div>
