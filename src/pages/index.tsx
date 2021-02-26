@@ -55,9 +55,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async function (con
   const { level, currentExperience, challengesCompleted } = context.req.cookies
   return {
     props: {
-      level: JSON.parse(level),
-      challengesCompleted: JSON.parse(challengesCompleted),
-      currentExperience: JSON.parse(currentExperience)
+      level: JSON.parse(level || '1'),
+      challengesCompleted: JSON.parse(challengesCompleted || '0'),
+      currentExperience: JSON.parse(currentExperience || '0')
     }
   }
 }
