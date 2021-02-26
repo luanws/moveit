@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { useChallenge } from "../../contexts/ChallengesContext"
-import { useCountDown } from "../../contexts/CountDownContext"
+import { useChallenge } from "../../hooks/Challenges"
+import { useCountDown } from "../../hooks/CountDown"
 
 const styles = require('./styles.module.css')
 

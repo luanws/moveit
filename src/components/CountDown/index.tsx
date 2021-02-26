@@ -1,4 +1,4 @@
-import { useCountDown } from "../../contexts/CountDownContext"
+import { useCountDown } from "../../hooks/CountDown"
 const styles = require('./styles.module.css')
 
 export default function CountDown() {

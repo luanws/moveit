@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
-import { useChallenge } from "../ChallengesContext"
+import { useChallenge } from "../Challenges"
 
 interface CountDownContextData {
   minutes: number

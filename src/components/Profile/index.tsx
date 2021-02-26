@@ -1,4 +1,4 @@
-import { useChallenge } from "../../contexts/ChallengesContext"
+import { useChallenge } from "../../hooks/Challenges"
 
 const styles = require('./styles.module.css')
 

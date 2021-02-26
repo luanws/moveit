@@ -1,6 +1,6 @@
 import '../styles/global.css'
-import { ChallengesProvider } from '../contexts/ChallengesContext'
-import { CountDownProvider } from '../contexts/CountDownContext'
+import { ChallengesProvider } from '../hooks/Challenges'
+import { CountDownProvider } from '../hooks/CountDown'
 
 export default function App({ Component, pageProps }: any) {
   return (
