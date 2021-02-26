@@ -28,9 +28,9 @@ export function CountDownProvider({ children }: PropsWithChildren<{}>) {
 
   useEffect(() => {
     if (isActive && time > 0) {
-      timeout = setTimeout(() => setTime(time => time - 1), 1000)
+      timeout = setInterval(() => setTime(time => time - 1), 1000)
     } else if (isActive && time == 0) onFinishCycle()
-  }, [isActive, time])
+  }, [isActive])
 
   function onFinishCycle() {
     setIsActive(false)
