@@ -14,24 +14,15 @@ interface ChallengesContextData {
   startNewChallenge(): void
   resetChallenge(): void
   completeChallenge(): void
-}
-
-interface Props {
-  level: number
-  currentExperience: number
-  challengesCompleted: number
+  setInitialLevelData(level: number, currentExperience: number, challengesCompleted: number): void
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
-export function ChallengesProvider(props: PropsWithChildren<Props>) {
-  const { children } = props
-
-  const [level, setLevel] = useCookieState<number>('level', props.level, false)
-  const [currentExperience, setCurrentExperience] = useCookieState<number>(
-    'currentExperience', props.currentExperience, false)
-  const [challengesCompleted, setChallengesCompleted] = useCookieState<number>(
-    'challengesCompleted', props.challengesCompleted, false)
+export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
+  const [level, setLevel] = useCookieState<number>('level', 1, false)
+  const [currentExperience, setCurrentExperience] = useCookieState<number>('currentExperience', 0, false)
+  const [challengesCompleted, setChallengesCompleted] = useCookieState<number>('challengesCompleted', 0, false)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState<boolean>(false)
 
@@ -70,6 +61,12 @@ export function ChallengesProvider(props: PropsWithChildren<Props>) {
     setActiveChallenge(null)
   }
 
+  function setInitialLevelData(level: number, currentExperience: number, challengesCompleted: number) {
+    setLevel(level)
+    setCurrentExperience(currentExperience)
+    setChallengesCompleted(challengesCompleted)
+  }
+
   function completeChallenge() {
     if (!activeChallenge) return
     const { amount } = activeChallenge
@@ -95,6 +92,7 @@ export function ChallengesProvider(props: PropsWithChildren<Props>) {
       startNewChallenge,
       resetChallenge,
       completeChallenge,
+      setInitialLevelData,
     }}>
       {children}
       {isLevelUpModalOpen && <LevelUpModal close={closeLevelUpModal} />}

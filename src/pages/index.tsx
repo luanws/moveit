@@ -17,6 +17,7 @@ interface Props {
 }
 
 export default function App(props: Props) {
+  const { setInitialLevelData } = useChallenge()
   const { minutes, seconds, isActive } = useCountDown()
 
   const { level, currentExperience, challengesCompleted } = props
@@ -24,32 +25,28 @@ export default function App(props: Props) {
   const secondsTwoDigits = String(seconds).padStart(2, '0')
   const displayTime = `${minutesTwoDigits}:${secondsTwoDigits} `
 
+  useEffect(() => {
+    setInitialLevelData(level, currentExperience, challengesCompleted)
+  }, [])
+
   return (
     <>
-      <ChallengesProvider
-        level={level}
-        challengesCompleted={challengesCompleted}
-        currentExperience={currentExperience}
-      >
-        <CountDownProvider>
-          <Head>
-            <title>{isActive ? displayTime : ''}move.it</title>
-          </Head>
-          <div className={styles.container}>
-            <ExperienceBar />
-            <section>
-              <div>
-                <Profile />
-                <CompletedChallenges />
-                <CountDown />
-              </div>
-              <div>
-                <ChallengeBox />
-              </div>
-            </section>
+      <Head>
+        <title>{isActive ? displayTime : ''}move.it</title>
+      </Head>
+      <div className={styles.container}>
+        <ExperienceBar />
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <CountDown />
           </div>
-        </CountDownProvider>
-      </ChallengesProvider>
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </div>
     </>
   )
 }
