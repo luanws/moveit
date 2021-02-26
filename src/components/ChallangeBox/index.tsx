@@ -4,7 +4,7 @@ import { useChallenge } from "../../contexts/ChallengesContext"
 const styles = require('./styles.module.css')
 
 export function ChallengeBox() {
-  const { activeChallenge, resetChallenge } = useChallenge()
+  const { activeChallenge, resetChallenge, completeChallenge } = useChallenge()
 
   return (
     <div className={styles.container}>
@@ -27,6 +27,7 @@ export function ChallengeBox() {
             <button
               type="button"
               className={styles.succeededButton}
+              onClick={completeChallenge}
             >Completei</button>
           </footer>
         </div>
