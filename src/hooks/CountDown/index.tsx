@@ -42,11 +42,11 @@ export function CountDownProvider({ children }: PropsWithChildren<{}>) {
     startNewChallenge()
     clearTimeout(timeout)
   }
-  
+
   function startCountDown() {
     setIsActive(true)
   }
-  
+
   function resetCountDown() {
     clearTimeout(timeout)
     setIsActive(false)
