@@ -2,6 +2,7 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 import challenges from '../../../challenges.json'
 import Challenge from "../../models/challenge"
 import usePersistedState from "../PersistedState"
+import useCookieState from "../PersistedState/cookie-state"
 
 interface ChallengesContextData {
   level: number
@@ -18,9 +19,9 @@ interface ChallengesContextData {
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
-  const [level, setLevel] = usePersistedState<number>('level', 1)
-  const [currentExperience, setCurrentExperience] = usePersistedState<number>('currentExperience', 0)
-  const [challengesCompleted, setChallengesCompleted] = usePersistedState<number>('challengesCompleted', 0)
+  const [level, setLevel] = useCookieState<number>('level', 1)
+  const [currentExperience, setCurrentExperience] = useCookieState<number>('currentExperience', 0)
+  const [challengesCompleted, setChallengesCompleted] = useCookieState<number>('challengesCompleted', 0)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
