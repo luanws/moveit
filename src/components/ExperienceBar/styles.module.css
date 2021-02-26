@@ -27,7 +27,7 @@ span.currentExperience {
     position: absolute;
     top: 12px;
     transform: translateX(-50%);
-    transition: all 0.5s;
+    transition: left 0.5s;
     width: 120px;
     text-align: center;
 }
