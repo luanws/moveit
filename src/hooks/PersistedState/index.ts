@@ -13,9 +13,9 @@ export default function usePersistedState<T>(key: string, defaultValue: T): [T, 
     }, [key, value])
 
     function get(): T | null {
-        const value = window.localStorage.getItem(key) as string | null
+        const value = window.localStorage.getItem(key)
         if (value !== null) {
-            return JSON.parse(value) as T
+            return JSON.parse(value)
         }
         return null
     }
