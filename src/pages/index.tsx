@@ -1,17 +1,33 @@
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { ChallengeBox } from '../components/ChallangeBox'
+import { useEffect } from 'react'
+import { ChallengeBox } from '../components/ChallengeBox'
 import CompletedChallenges from '../components/CompletedChallenges'
 import CountDown from '../components/CountDown'
 import { ExperienceBar } from '../components/ExperienceBar'
 import Profile from '../components/Profile'
+import { useChallenge } from '../hooks/Challenges'
 import { useCountDown } from '../hooks/CountDown'
 const styles = require('../styles/index.module.css')
 
-export default function App() {
+interface Props {
+  level: number
+  currentExperience: number
+  challengesCompleted: number
+}
+
+export default function App(props: Props) {
+  const { setInitialLevelData } = useChallenge()
   const { minutes, seconds, isActive } = useCountDown()
+
+  const { level, currentExperience, challengesCompleted } = props
   const minutesTwoDigits = String(minutes).padStart(2, '0')
   const secondsTwoDigits = String(seconds).padStart(2, '0')
   const displayTime = `${minutesTwoDigits}:${secondsTwoDigits} `
+
+  useEffect(() => {
+    setInitialLevelData(level, currentExperience, challengesCompleted)
+  }, [level, currentExperience, challengesCompleted])
 
   return (
     <>
@@ -33,4 +49,15 @@ export default function App() {
       </div>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async function (context) {
+  const { level, currentExperience, challengesCompleted } = context.req.cookies
+  return {
+    props: {
+      level: JSON.parse(level),
+      challengesCompleted: JSON.parse(challengesCompleted),
+      currentExperience: JSON.parse(currentExperience)
+    }
+  }
 }

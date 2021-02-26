@@ -14,14 +14,15 @@ interface ChallengesContextData {
   startNewChallenge(): void
   resetChallenge(): void
   completeChallenge(): void
+  setInitialLevelData(level: number, currentExperience: number, challengesCompleted: number): void
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
-  const [level, setLevel] = useCookieState<number>('level', 1)
-  const [currentExperience, setCurrentExperience] = useCookieState<number>('currentExperience', 0)
-  const [challengesCompleted, setChallengesCompleted] = useCookieState<number>('challengesCompleted', 0)
+  const [level, setLevel] = useCookieState<number>('level', 1, false)
+  const [currentExperience, setCurrentExperience] = useCookieState<number>('currentExperience', 0, false)
+  const [challengesCompleted, setChallengesCompleted] = useCookieState<number>('challengesCompleted', 0, false)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
@@ -53,6 +54,12 @@ export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
     setActiveChallenge(null)
   }
 
+  function setInitialLevelData(level: number, currentExperience: number, challengesCompleted: number) {
+    setLevel(level)
+    setCurrentExperience(currentExperience)
+    setChallengesCompleted(challengesCompleted)
+  }
+
   function completeChallenge() {
     if (!activeChallenge) return
     const { amount } = activeChallenge
@@ -78,6 +85,7 @@ export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
       startNewChallenge,
       resetChallenge,
       completeChallenge,
+      setInitialLevelData,
     }}>
       {children}
     </ChallengesContext.Provider>
