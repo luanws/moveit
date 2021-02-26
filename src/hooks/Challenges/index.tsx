@@ -1,5 +1,6 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import challenges from '../../../challenges.json'
+import { LevelUpModal } from "../../components/LevelUpModal"
 import Challenge from "../../models/challenge"
 import useCookieState from "../PersistedState/cookie-state"
 
@@ -32,6 +33,8 @@ export function ChallengesProvider(props: PropsWithChildren<Props>) {
   const [challengesCompleted, setChallengesCompleted] = useCookieState<number>(
     'challengesCompleted', props.challengesCompleted, false)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState<boolean>(false)
+
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
   useEffect(() => {
@@ -40,6 +43,11 @@ export function ChallengesProvider(props: PropsWithChildren<Props>) {
 
   function levelUp() {
     setLevel(level => level + 1)
+    setIsLevelUpModalOpen(true)
+  }
+
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false)
   }
 
   function startNewChallenge() {
@@ -89,6 +97,7 @@ export function ChallengesProvider(props: PropsWithChildren<Props>) {
       completeChallenge,
     }}>
       {children}
+      {isLevelUpModalOpen && <LevelUpModal close={closeLevelUpModal} />}
     </ChallengesContext.Provider>
   )
 }
