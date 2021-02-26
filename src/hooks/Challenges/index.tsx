@@ -1,6 +1,7 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import challenges from '../../../challenges.json'
 import Challenge from "../../models/challenge"
+import usePersistedState from "../PersistedState"
 
 interface ChallengesContextData {
   level: number
@@ -17,9 +18,9 @@ interface ChallengesContextData {
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children }: PropsWithChildren<{}>) {
-  const [level, setLevel] = useState<number>(1)
-  const [currentExperience, setCurrentExperience] = useState<number>(0)
-  const [challengesCompleted, setChallengesCompleted] = useState<number>(0)
+  const [level, setLevel] = usePersistedState<number>('level', 1)
+  const [currentExperience, setCurrentExperience] = usePersistedState<number>('currentExperience', 0)
+  const [challengesCompleted, setChallengesCompleted] = usePersistedState<number>('challengesCompleted', 0)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
