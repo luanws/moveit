@@ -17,7 +17,7 @@ let timeout: NodeJS.Timeout
 export function CountDownProvider({ children }: PropsWithChildren<{}>) {
   const { startNewChallenge } = useChallenge()
 
-  const initialTime = 0.05 * 60
+  const initialTime = 25 * 60
 
   const [time, setTime] = useState<number>(initialTime)
   const [isActive, setIsActive] = useState<boolean>(false)
