@@ -29,13 +29,18 @@ export function CountDownProvider({ children }: PropsWithChildren<{}>) {
   useEffect(() => {
     if (isActive && time > 0) {
       timeout = setInterval(() => setTime(time => time - 1), 1000)
-    } else if (isActive && time == 0) onFinishCycle()
+    }
   }, [isActive])
+
+  useEffect(() => {
+    if (isActive && time <= 0) onFinishCycle()
+  }, [isActive, time])
 
   function onFinishCycle() {
     setIsActive(false)
     setHasFinished(true)
     startNewChallenge()
+    clearTimeout(timeout)
   }
 
   function startCountDown() {
@@ -43,7 +48,6 @@ export function CountDownProvider({ children }: PropsWithChildren<{}>) {
   }
 
   function resetCountDown() {
-    clearTimeout(timeout)
     setIsActive(false)
     setHasFinished(false)
     setTime(initialTime)
