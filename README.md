@@ -12,6 +12,11 @@
 
 Para obter uma cópia local instalada e funcionando, siga estas etapas seguintes.
 
+### Pré-requisitos
+
+- [node](https://nodejs.org/)
+- [npm](https://www.npmjs.com/get-npm)
+
 ### Instalação
 
 1. Clone o repositório
