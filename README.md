@@ -1,3 +1,4 @@
+[github-project]: https://github.com/luanws/moveit
 [contributors-shield]: https://img.shields.io/github/contributors/luanws/moveit.svg?style=for-the-badge
 [contributors-url]: https://github.com/luanws/moveit/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/luanws/moveit.svg?style=for-the-badge
@@ -10,7 +11,6 @@
 [license-url]: https://github.com/luanws/moveit/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/luanws/
-[product-screenshot]: images/screenshot.png
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -44,10 +44,6 @@
 <br>
 
 ![Screenshot](public/readme/screenshot.png)
-![Screenshot](public/readme/screenshot2.png)
-
-[Acessar aplicação WEB](https://moveit-luanws.vercel.app/)
-
 
 ## 🚀 Tecnologias utilizadas
 - [Next.js](https://nextjs.org/)
