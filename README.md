@@ -49,6 +49,14 @@
 
 [![Screenshot](public/readme/screenshot.png)][web-project]
 
+<p style='text-align: justify;'>
+Move.it foi iniciado durante o evento NLW (Next Level Week) em sua 4ª edição promovido pela Rocketseat com o intuito de criar uma ferramente para auxiliar desenvolvedores que passam boa parte do dia sentados em frente ao computador a realizarem pequenas pausas estratégicas conforme o método de pomodoro.
+</p>
+<p style='text-align: justify;'>
+O projeto diferencia-se do pomodoro devido aos desafios propostos que estimulam o desenvolvedor a realizar exercícios físicos e visuais durante o período de intervalo equivalente a 5 minutos através da gamificação, onde o desenvolvedor poderá avançar de level e ganhar experiência ao completar um desafio.
+</p>
+
+
 # 🚀 Tecnologias utilizadas
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
