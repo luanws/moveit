@@ -45,7 +45,7 @@
 
 <br>
 
-# Sobre
+# 🔖 Sobre
 
 [![Screenshot](public/readme/screenshot.png)][web-project]
 
@@ -62,7 +62,7 @@ O projeto diferencia-se do pomodoro devido aos desafios propostos que estimulam 
 - [React.js](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
-#  Começando
+# 🏃 Começando
 
 Para obter uma cópia local instalada e funcionando, siga estas etapas seguintes.
 
