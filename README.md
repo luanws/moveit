@@ -22,8 +22,8 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <br/>
+<br/>
 
-<br />
 <p align="center">
   <a href="https://github.com/luanws/moveit">
     <img src="public/logo-full.svg" alt="Logo" height="80">
