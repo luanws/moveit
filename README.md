@@ -33,7 +33,7 @@
     O pomodoro feito feito especialmente para desenvolvedores
     <br />
     <br />
-    <a href="https://github.com/luanws/moveit">Acessar aplicação WEB</a>
+    <a href="https://moveit-luanws.vercel.app/">Acessar aplicação WEB</a>
     ·
     <a href="https://github.com/luanws/moveit/issues">Reportar Bug</a>
     ·
@@ -42,6 +42,7 @@
 </p>
 
 <br>
+
 
 ![Screenshot](public/readme/screenshot.png)
 
