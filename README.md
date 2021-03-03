@@ -19,7 +19,12 @@ Para obter uma cópia local instalada e funcionando, siga estas etapas seguintes
 git clone https://github.com/luanws/moveit.git
 ```
 
-2. Instale as dependências
+2. Acesse a pasta do projeto
+```sh
+cd moveit
+```
+
+3. Instale as dependências
 ```sh
 npm install
 ```
